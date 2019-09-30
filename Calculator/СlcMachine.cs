@@ -13,7 +13,10 @@ namespace Calculator
 
         public bool _operatorClicked = false;
 
-        private string _signValue = "+";
+        private bool comaClicked = false;
+
+        private bool _signFirstValue = true;
+        private bool _signSecondValue = true;
 
         //список символов, которые добавляются в него при кликам по кнопкам
         public List<String> StringRepresOfNum;
@@ -25,6 +28,8 @@ namespace Calculator
         public double SecondValue { get; set; }
 
         public string OperatorValue { get; set; }
+
+        
 
 
         //public bool ComaClicked { get; set; }
@@ -38,7 +43,9 @@ namespace Calculator
             }
         }
 
-        public string SignValue { get => _signValue; set => _signValue = value; }
+        public bool FirstSignValue { get => _signFirstValue; set => _signFirstValue = value; }
+        public bool SignSecondValue { get => _signSecondValue; set => _signSecondValue = value; }
+        public bool ComaClicked { get => comaClicked; set => comaClicked = value; }
 
         public СlcMachine()
         {
@@ -104,19 +111,30 @@ namespace Calculator
             return Math.Log10(x);
         }
 
-        public void AddToExpression(int num)
+        public void AddToExpression(object num)
         {
             StringRepresOfNum.Add(Convert.ToString(num));
         }
 
+        public double SignConverter(bool signValue)
+        {
+            if (signValue)
+            {
+                return 1;
+            }else
+            {
+                return -1;
+            }
+        }
+
         public void ConvertFirstValue()
         {
-            FirstValue = Convert.ToDouble(StringRepresOfNum.Aggregate((x, y) => x + y));
+            FirstValue = SignConverter(this.FirstSignValue) * Convert.ToDouble(StringRepresOfNum.Aggregate((x, y) => x + y));
             StringRepresOfNum.Clear();
         }
         public void ConvertSecondValue()
         {
-            SecondValue = Convert.ToDouble(StringRepresOfNum.Aggregate((x, y) => x + y));
+            SecondValue = SignConverter(this.SignSecondValue) * Convert.ToDouble(StringRepresOfNum.Aggregate((x, y) => x + y));
             StringRepresOfNum.Clear();
         }
 

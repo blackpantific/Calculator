@@ -50,7 +50,7 @@
 
 
         <Style TargetType="ToggleButton" x:Key="ToggleButton">
-            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Background" Value="#d9d9d9"/>
             <Setter Property="Button.Height" Value="50"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Margin" Value="1.5"/>
@@ -134,8 +134,29 @@
 
         </Grid>
 
-        <TextBlock x:Name="numbersBlock" Grid.Row="1" Background="Aqua" FontFamily="Helvetica" FontSize="40"  
-                  Height="45" Width="350" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextAlignment="Right"/>
+        <TextBlock 
+            x:Name="numbersBlock" 
+            Grid.Row="1" 
+            Background="#bfbfbf" 
+            FontFamily="Helvetica" 
+            FontSize="45"  
+            Height="45" 
+            Width="350" 
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Bottom" 
+            TextAlignment="Right"
+            Margin="4"/>
+
+        <TextBlock x:Name="Scientific" 
+                   Grid.Row="0"
+                   Background="#bfbfbf"
+                   Text="Инженерный"
+                   FontFamily="Helvetica"
+                   FontWeight="Medium"
+                   FontSize="40"
+                   Padding="5"
+                   Foreground="#211F21"
+                   />
 
 
 
